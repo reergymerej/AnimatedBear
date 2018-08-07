@@ -86,11 +86,15 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        var multiplierForDirection: CGFloat
+        if location.x < self.frame.midX {
+            multiplierForDirection = 1.0
+        } else {
+            multiplierForDirection = -1.0
+        }
+        self.bear.xScale = abs(bear.xScale) * multiplierForDirection
     }
     
     
