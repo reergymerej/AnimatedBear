@@ -49,6 +49,42 @@ class GameScene: SKScene {
         )
     }
     
+    func moveBear(location: CGPoint) {
+        var multiplierForDirection: CGFloat
+        let bearSpeed = self.frame.size.width / 3.0
+        
+        let moveDifference = CGPoint(x: location.x - bear.position.x,
+                                     y: location.y - bear.position.y)
+        let distanceToMove = sqrt(moveDifference.x * moveDifference.x + moveDifference.y * moveDifference.y)
+        
+        let moveDuration = distanceToMove / bearSpeed
+        
+        if moveDifference.x < 0 {
+            multiplierForDirection = 1.0
+        } else {
+            multiplierForDirection = -1.0
+        }
+        
+        self.bear.xScale = abs(bear.xScale) * multiplierForDirection
+        
+        if bear.action(forKey: "walkingInPlaceBear") == nil {
+            animateBear()
+        }
+        
+        let moveAction = SKAction.move(to: location, duration: (TimeInterval(moveDuration)))
+        
+        let doneAction = SKAction.run({ [weak self] in
+            self?.bearMoveEnded()
+        })
+        
+        let moveActionWithDone = SKAction.sequence([moveAction, doneAction])
+        bear.run(moveActionWithDone, withKey: "bearMoving")
+    }
+    
+    func bearMoveEnded() {
+        self.bear.removeAllActions()
+    }
+
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
@@ -64,15 +100,7 @@ class GameScene: SKScene {
             self.addChild(n)
         }
     }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let label = self.label {
             label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
@@ -88,16 +116,9 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         let location = touch.location(in: self)
-        var multiplierForDirection: CGFloat
-        if location.x < self.frame.midX {
-            multiplierForDirection = 1.0
-        } else {
-            multiplierForDirection = -1.0
-        }
-        self.bear.xScale = abs(bear.xScale) * multiplierForDirection
+        self.moveBear(location: location)
     }
-    
-    
+
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
