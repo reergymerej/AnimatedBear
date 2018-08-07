@@ -13,30 +13,41 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    private var bear = SKSpriteNode()
+    private var bearWalkingFrames: [SKTexture] = []
     
     override func didMove(to view: SKView) {
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
+        self.backgroundColor = .blue
+        self.buildBear()
+        self.animateBear()
     }
     
+    func buildBear() {
+        let bearAnimatedAtlas = SKTextureAtlas(named: "BearImages")
+        var walkFrames : [SKTexture] = []
+        let numImages = bearAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let bearTextureName = "bear\(i)"
+            walkFrames.append(bearAnimatedAtlas.textureNamed(bearTextureName))
+        }
+        self.bearWalkingFrames = walkFrames
+        
+        let firstFrameTexture = self.bearWalkingFrames[0]
+        self.bear = SKSpriteNode(texture: firstFrameTexture)
+        self.bear.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        self.addChild(self.bear)
+    }
+    
+    func animateBear() {
+        self.bear.run(SKAction.repeatForever(
+            SKAction.animate(
+                with: self.bearWalkingFrames,
+                timePerFrame: 0.1,
+                resize: false,
+                restore: true)),
+                      withKey: "walkingInPlaceBear"
+        )
+    }
     
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {

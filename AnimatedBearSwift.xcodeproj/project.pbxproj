@@ -8,26 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		F6E696F621192D1900756275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E696F521192D1900756275 /* AppDelegate.swift */; };
-		F6E696F821192D1900756275 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F6E696F721192D1900756275 /* GameScene.sks */; };
-		F6E696FA21192D1900756275 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F6E696F921192D1900756275 /* Actions.sks */; };
 		F6E696FC21192D1900756275 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E696FB21192D1900756275 /* GameScene.swift */; };
 		F6E696FE21192D1900756275 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E696FD21192D1900756275 /* GameViewController.swift */; };
 		F6E6970121192D1900756275 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6E696FF21192D1900756275 /* Main.storyboard */; };
 		F6E6970321192D1900756275 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E6970221192D1900756275 /* Assets.xcassets */; };
 		F6E6970621192D1900756275 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6E6970421192D1900756275 /* LaunchScreen.storyboard */; };
+		F6E6970E21192DFA00756275 /* BearImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F6E6970D21192DF900756275 /* BearImages.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F6E696F221192D1900756275 /* AnimatedBearSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedBearSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E696F521192D1900756275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F6E696F721192D1900756275 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		F6E696F921192D1900756275 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		F6E696FB21192D1900756275 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		F6E696FD21192D1900756275 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F6E6970021192D1900756275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F6E6970221192D1900756275 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6E6970521192D1900756275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6E6970721192D1900756275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6E6970D21192DF900756275 /* BearImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BearImages.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				F6E696F521192D1900756275 /* AppDelegate.swift */,
-				F6E696F721192D1900756275 /* GameScene.sks */,
-				F6E696F921192D1900756275 /* Actions.sks */,
 				F6E696FB21192D1900756275 /* GameScene.swift */,
 				F6E696FD21192D1900756275 /* GameViewController.swift */,
 				F6E696FF21192D1900756275 /* Main.storyboard */,
+				F6E6970D21192DF900756275 /* BearImages.atlas */,
 				F6E6970221192D1900756275 /* Assets.xcassets */,
 				F6E6970421192D1900756275 /* LaunchScreen.storyboard */,
 				F6E6970721192D1900756275 /* Info.plist */,
@@ -132,10 +129,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6E6970121192D1900756275 /* Main.storyboard in Resources */,
-				F6E696F821192D1900756275 /* GameScene.sks in Resources */,
 				F6E6970321192D1900756275 /* Assets.xcassets in Resources */,
 				F6E6970621192D1900756275 /* LaunchScreen.storyboard in Resources */,
-				F6E696FA21192D1900756275 /* Actions.sks in Resources */,
+				F6E6970E21192DFA00756275 /* BearImages.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
