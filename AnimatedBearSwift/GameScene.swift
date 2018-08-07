@@ -19,7 +19,6 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.backgroundColor = .blue
         self.buildBear()
-        self.animateBear()
     }
     
     func buildBear() {
@@ -35,6 +34,9 @@ class GameScene: SKScene {
         let firstFrameTexture = self.bearWalkingFrames[0]
         self.bear = SKSpriteNode(texture: firstFrameTexture)
         self.bear.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        let size = bear.size
+        let scale = CGFloat(0.3)
+        bear.scale(to: CGSize(width: size.width * scale, height: size.height * scale))
         self.addChild(self.bear)
     }
     
